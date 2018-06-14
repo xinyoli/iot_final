@@ -1,7 +1,7 @@
 
 import MySQLdb
 
-db = MySQLdb.connect(host="140.114.14.225", user="phpmyadmin", passwd="1122", db="test_db")
+db = MySQLdb.connect(host="localhost", user="phpmyadmin", passwd="1122", db="test_db")
 cursor = db.cursor()
 
 cursor.execute("SELECT * FROM products")

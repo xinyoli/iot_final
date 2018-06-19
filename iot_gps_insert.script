@@ -1,0 +1,4 @@
+INSERT INTO iot_gps (EL, NL, emergency,fall,kidnap)
+  VALUES (120.979425, 24.785220, TRUE, FALSE,FALSE);
+INSERT INTO iot_gps (EL, NL, emergency,fall,kidnap)
+  VALUES (121.007313, 24.801115, FALSE, FALSE,FALSE);

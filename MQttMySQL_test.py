@@ -12,7 +12,7 @@ def on_message(client, userdata, msg):
 	print(type(message_))
 	print(message_, "\n")
 	
-	if message_ != "close" : 
+	if message_ != "hello" : 
 	
 		try:
 		
@@ -53,42 +53,25 @@ def on_message(client, userdata, msg):
 			
 			insert_stmt = (
 				"INSERT INTO iot_test (channel, sf, time, gwip, gwid, repeater,systype,rssi,snr,snr_max,snr_min,macAddr,data,frameCnt,fport)"
-				"VALUES (%(channel)s, %(sf)s, %(time)s, %(gwip)s, %(gwid)s, %(repeater)s, %(systype)s, %(rssi)s, %(snr)s, %(snr_max)s, %(snr_min)s, %(macAddr)s, %(data)s, %(frameCnt)s, %(fport)s)"
+				"VALUES (%d, %d, %s, %s, %s, %s, %d, %f, %f, %f, %f, %s, %s, %d, %d)"
 			)
-			data = {
-				"channel" : json_data['channel'], 
-				"sf" : json_data['sf'], 
-				"time" : json_data['time'], 
-				"gwip" : json_data['gwip'], 
-				"gwid" : json_data['gwid'], 
-				"repeater" : json_data['repeater'], 
-				"systype" : json_data['systype'], 
-				"rssi" : json_data['rssi'], 
-				"snr" : json_data['snr'],
-				"snr_max" : json_data['snr_max'], 
-				"snr_min" : json_data['snr_min'], 
-				"macAddr" : json_data['macAddr'], 
-				"data" : json_data['data'], 
-				"frameCnt" : json_data['frameCnt'], 
-				"fport" : json_data['fport']
-			}
-			# data = (\
-				# int(json_data['channel']), \
-				# int(json_data['sf']), \
-				# str(json_data['time']), \
-				# str(json_data['gwip']), \
-				# str(json_data['gwid']), \
-				# str(json_data['repeater']), \
-				# int(json_data['systype']), \
-				# float(json_data['rssi']), \
-				# float(json_data['snr']), \
-				# float(json_data['snr_max']), \
-				# float(json_data['snr_min']), \
-				# str(json_data['macAddr']), \
-				# str(json_data['data']), \
-				# int(json_data['frameCnt']), \
-				# int(json_data['fport']) \
-			# )
+			data = (\
+				int(json_data['channel']), \
+				int(json_data['sf']), \
+				str(json_data['time']), \
+				str(json_data['gwip']), \
+				str(json_data['gwid']), \
+				str(json_data['repeater']), \
+				int(json_data['systype']), \
+				float(json_data['rssi']), \
+				float(json_data['snr']), \
+				float(json_data['snr_max']), \
+				float(json_data['snr_min']), \
+				str(json_data['macAddr']), \
+				str(json_data['data']), \
+				int(json_data['frameCnt']), \
+				int(json_data['fport']) \
+			)
 			db = MySQLdb.connect(host="localhost", user="phpmyadmin", passwd="1122", db="mqtt_db", charset="utf8")
 			cursor = db.cursor()
 			cursor.execute(insert_stmt, data)

@@ -1,5 +1,6 @@
 CREATE TABLE iot_test (
-    channel int,
+    id INT NOT NULL AUTO_INCREMENT, 
+	channel int,
     sf int,
     time DATETIME,
     gwip varchar(255),
@@ -13,5 +14,6 @@ CREATE TABLE iot_test (
 	macAddr int,
 	data varchar(255),
 	frameCnt int, 
-	fport int
+	fport int,
+	PRIMARY KEY(id)   
 );

@@ -1,0 +1,10 @@
+CREATE TABLE iot_gps ( 
+  id INT NOT NULL AUTO_INCREMENT, 
+  timedate DATETIME on update CURRENT_TIMESTAMP, 
+  EL FLOAT NOT NULL,   
+  NL FLOAT NOT NULL,  
+  emergency BOOL NOT NULL, 
+  fall BOOL NOT NULL, 
+  kidnap BOOL NOT NULL, 
+  PRIMARY KEY(id)      
+);
